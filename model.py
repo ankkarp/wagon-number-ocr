@@ -61,7 +61,10 @@ class NumberOcrModel:
             crops_width = [img.shape[1] for img in images]
             crop_image_name = crops[crops_width.index(max(crops_width))]
         else:
-            crop_image_name = image_name
+            if image_name[-3:] == 'png':
+                crop_image_name = image_name.replace('png', 'jpg')
+            else:
+                crop_image_name = image_name
 
         if detection_result and bin_prep:
             img = cv2.imread(dir_path + crop_image_name)
