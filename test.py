@@ -6,7 +6,7 @@ import csv
 
 MODEL_RESULT_PATH = 'results.csv'  # save path for csv with results
 # DATA_PATH = './test_images/'  # path to test images
-DATA_PATH = './small_test/'
+DATA_PATH = './test_images/'
 
 images = []
 results = []
