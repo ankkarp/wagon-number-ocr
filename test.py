@@ -1,13 +1,20 @@
+import os
 from os import walk
 from model import NumberOcrModel
 import pandas as pd
 import csv
 
 MODEL_RESULT_PATH = 'results.csv'  # save path for csv with results
-DATA_PATH = './test_images/'  # path to test images
+# DATA_PATH = './test_images/'  # path to test images
+DATA_PATH = './small_test/'
 
 images = []
 results = []
+
+if not os.path.isdir('./models'):
+    os.mkdir('./models')
+if not os.path.isdir('./models'):
+    os.mkdir('./test_images')
 
 
 def to_csv(results):
