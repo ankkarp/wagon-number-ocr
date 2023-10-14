@@ -75,27 +75,20 @@ class NumberOcrModel:
         num_1 = re.sub(r'[^0-9]', '', result_1['predictions'][0]['rec_texts'][0])  # aster
         num_2 = re.sub(r'[^0-9]', '', result_2['text'][0])  # model scope
 
-        if len(num_2) == 8:
-            num_sub = num_2
-        elif len(num_1) == 8:
+        if not num_2:
             num_sub = num_1
-        elif len(num_2) > 8:
-            num_sub = num_2[:8]
-        elif len(num_1) > 8:
-            num_sub = num_1[:8]
-        elif not num_2:
-            num_sub = num_1
-        elif not num_1:
-            num_sub = num_2
-        elif len(num_2) < 8 and len(num_1) == 8:
-            num_sub = num_1
-        else:
-            num_sub = num_2
+        elif num_1:
+            if len(num_2) >= 8:
+                num_sub = num_2[:8]
+            if len(num_2) < 8 and len(num_1) >= 8:
+                num_sub = num_1[:8]
+            if len(num_2) < 8 and len(num_1) < 8:
+                num_sub = num_2
 
         result = [{
             'filename': image_name,
-            'type': (0, 1)[len(num_sub) > 0],
-            'number': num_sub,
+            'type': int(num_sub != None),
+            'number': (0, num_sub)[num_sub != None],
             'is_correct': is_valid(num_sub),
         }]
 

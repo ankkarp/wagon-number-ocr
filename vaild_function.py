@@ -2,6 +2,9 @@ import csv
 
 
 def is_valid(result):
+    if not result:
+        return 0
+
     cont_sum = 0
     control_num = -1
 
@@ -15,3 +18,4 @@ def is_valid(result):
             else:
                 cont_sum += num
     return int((cont_sum % 10 == 0 and control_num == 0) or (10 - cont_sum % 10) == control_num)
+
