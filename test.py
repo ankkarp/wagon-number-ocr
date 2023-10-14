@@ -11,11 +11,6 @@ DATA_PATH = './test_images/'
 images = []
 results = []
 
-if not os.path.isdir('./models'):
-    os.mkdir('./models')
-if not os.path.isdir('./models'):
-    os.mkdir('./test_images')
-
 
 def to_csv(results):
     with open(MODEL_RESULT_PATH, 'w', encoding='UTF8') as f:
