@@ -1,4 +1,3 @@
-import csv
 
 
 def is_valid(result):

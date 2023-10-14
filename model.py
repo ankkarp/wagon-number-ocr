@@ -4,9 +4,10 @@ from modelscope.pipelines import pipeline
 from modelscope.utils.constant import Tasks
 import torch
 import cv2
-import os
+from os import walk
 import re
 from vaild_function import is_valid
+import os
 
 '''
     detection_mode: './models/custom_yolov8x.pt'
@@ -66,8 +67,22 @@ class NumberOcrModel:
         all_dirs = os.listdir('./yolo_detections')
         max_length = len(max(all_dirs, key=len))
         data_dir = sorted([x for x in all_dirs if len(x) == max_length])[-1]
+        dir_path = f'./yolo_detections/{data_dir}/crops/number/'
 
-        crop_img_path = f'./yolo_detections/{data_dir}/crops/number/' + image_name
+        # get biggest crop image
+        crops = []
+
+        for (dirpath, dirnames, filenames) in walk(dir_path):
+            crops.extend(filenames)
+
+        if len(crops) > 1:
+            images = [cv2.imread(dir_path + img) for img in crops]
+            crops_width = [img.shape[1] for img in images]
+            crop_image_name = crops[crops_width.index(max(crops_width))]
+        else:
+            crop_image_name = image_name
+
+        crop_img_path = dir_path + crop_image_name
 
         result_1 = self.angle_rec_model(crop_img_path)
         result_2 = self.rec_model(crop_img_path)
@@ -90,7 +105,7 @@ class NumberOcrModel:
         result = [{
             'filename': image_name,
             'type': int(num_sub != None),
-            'number': (0, num_sub)[num_sub != None],
+            'number': (0, num_sub)[num_sub != None and num_sub != ''],
             'is_correct': is_valid(num_sub),
         }]
 
