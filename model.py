@@ -79,7 +79,8 @@ class NumberOcrModel:
                     'type': 0,
                     'number': 0,
                     'is_correct': 0,
-                }]
+                }
+            ]
 
         result_1 = self.angle_rec_model(crop_image_path)
         result_2 = self.rec_model(crop_image_path)
