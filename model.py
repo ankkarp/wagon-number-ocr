@@ -47,31 +47,12 @@ class NumberOcrModel:
         detection_result = self.detection_model.predict(image_path, save=True, save_crop=True,
                                                         project='yolo_detections', name='results', verbose=False)
 
-        if detection_result and bin_prep:
-            img = cv2.imread(DETECTION_SAVE_PATH + image_name)
-            blur_img = cv2.GaussianBlur(img, (1, 1), 0)
-            bin_img = cv2.adaptiveThreshold(blur_img, 255, BIN_TYPES[bin_prep], cv2.THRESH_BINARY_INV, 29, -4)
-            cv2.imwrite(DETECTION_SAVE_PATH + image_name, bin_img)
-        return detection_result
-
-    def recognize(self, image_name, detected_data):
-        if not detected_data[0] or len(detected_data[0].cpu().numpy()) == 0:
-            return [
-                {
-                    'filename': image_name,
-                    'type': 0,
-                    'number': 0,
-                    'is_correct': 0,
-                }]
-
         all_dirs = os.listdir('./yolo_detections')
         max_length = len(max(all_dirs, key=len))
         data_dir = sorted([x for x in all_dirs if len(x) == max_length])[-1]
         dir_path = f'./yolo_detections/{data_dir}/crops/number/'
 
-        # get biggest crop image
         crops = []
-
         for (dirpath, dirnames, filenames) in walk(dir_path):
             crops.extend(filenames)
 
@@ -82,10 +63,26 @@ class NumberOcrModel:
         else:
             crop_image_name = image_name
 
-        crop_img_path = dir_path + crop_image_name
+        if detection_result and bin_prep:
+            img = cv2.imread(dir_path + crop_image_name)
+            blur_img = cv2.GaussianBlur(img, (1, 1), 0)
+            bin_img = cv2.adaptiveThreshold(blur_img, 255, BIN_TYPES[bin_prep], cv2.THRESH_BINARY_INV, 29, -4)
+            cv2.imwrite(dir_path + crop_image_name, bin_img)
 
-        result_1 = self.angle_rec_model(crop_img_path)
-        result_2 = self.rec_model(crop_img_path)
+        return detection_result, dir_path + crop_image_name
+
+    def recognize(self, image_name, crop_image_path, detected_data):
+        if not detected_data[0] or len(detected_data[0].cpu().numpy()) == 0:
+            return [
+                {
+                    'filename': image_name,
+                    'type': 0,
+                    'number': 0,
+                    'is_correct': 0,
+                }]
+
+        result_1 = self.angle_rec_model(crop_image_path)
+        result_2 = self.rec_model(crop_image_path)
 
         num_1 = re.sub(r'[^0-9]', '', result_1['predictions'][0]['rec_texts'][0])  # aster
         num_2 = re.sub(r'[^0-9]', '', result_2['text'][0])  # model scope
@@ -113,5 +110,5 @@ class NumberOcrModel:
 
     def predict(self, img_path, bin_prep=None):
         image_name = os.path.basename(os.path.normpath(img_path))
-        detected_data = self.preprocess(img_path, image_name, bin_prep)
-        return self.recognize(image_name, detected_data)
+        detected_data, crop_img_path = self.preprocess(img_path, image_name, bin_prep)
+        return self.recognize(image_name, crop_img_path, detected_data)
