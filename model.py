@@ -9,7 +9,7 @@ import re
 from vaild_function import is_valid
 
 '''
-    detection_mode: PATH TO DETECTION MODEL
+    detection_mode: './models/custom_yolov8x.pt'
     rec_model: damo/cv_convnextTiny_ocr-recognition-general_damo
     angle_rec_model: Aster
 '''
@@ -84,6 +84,8 @@ class NumberOcrModel:
                 num_sub = num_1[:8]
             if len(num_2) < 8 and len(num_1) < 8:
                 num_sub = num_2
+        else:
+            num_sub = num_2
 
         result = [{
             'filename': image_name,

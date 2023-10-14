@@ -1,9 +1,9 @@
 from os import walk
 from model import NumberOcrModel
-from pandas import pd
+import pandas as pd
 import csv
 
-MODEL_RESULT_PATH = './model_result/results.csv'  # save path for csv with results
+MODEL_RESULT_PATH = 'results.csv'  # save path for csv with results
 DATA_PATH = './test_images/'  # path to test images
 
 images = []
@@ -20,8 +20,7 @@ def to_csv(results):
 
 
 model = NumberOcrModel(
-    detection_model='PATH TO DETECTION MODEL',  # path to detection_model
-
+    detection_model='./models/custom_yolov8x.pt',  # path to detection_model
     rec_model='damo/cv_convnextTiny_ocr-recognition-general_damo',
     angle_rec_model='Aster'
 )
