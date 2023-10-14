@@ -1,7 +1,7 @@
 # <p align="center"> ЦИФРОВОЙ ПРОРЫВ: СЕЗОН ИИ </p>
 # <p align="center"> Распознавание номеров железнодорожных вагонов </p>
 <p align="center">
-<img width="500" height="500" alt="photo" src="https://github.com/ankkarp/wagon-number-ocr/blob/kinowari/-removebg-preview.png">
+<img width="400" height="400" alt="photo" src="https://github.com/ankkarp/wagon-number-ocr/blob/kinowari/-removebg-preview.png">
 
 </p> 
 
