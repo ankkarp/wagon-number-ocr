@@ -10,10 +10,15 @@ import matplotlib
 import os
 
 pd_ans = pd.DataFrame(columns=['filemname', 'type', 'number', 'is_correct'])
-
+model = NumberOcrModel(
+    detection_model='./models/custom_yolov8x.pt',  # path to detection_model
+    rec_model='damo/cv_convnextTiny_ocr-recognition-general_damo',
+    angle_rec_model='Aster'
+)
 
 def get_image(image_path):
     global pd_ans
+    global model
     processed_image_path = None
 
     if image_path:
@@ -55,11 +60,4 @@ outputs = [
 demo = gr.Interface(get_image, inputs, outputs)
 matplotlib.use('TkAgg')
 
-if __name__ == '__main__':
-    model = NumberOcrModel(
-        detection_model='./models/custom_yolov8x.pt',  # path to detection_model
-        rec_model='damo/cv_convnextTiny_ocr-recognition-general_damo',
-        angle_rec_model='Aster'
-    )
-
-    demo.launch(share=True)
+demo.launch(share=True)
