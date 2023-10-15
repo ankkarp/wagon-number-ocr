@@ -23,6 +23,14 @@
 
 Решение представляет из себя последовательное применение моделей детекции и распознавания текста с последующей обработкой результата.
 
+### Архетиктура модели
+<img width="1200" height="300" alt="image" src="https://github.com/ankkarp/wagon-number-ocr/blob/kinowari/Frame%202.jpg"> 
+
+<br>
+<br>
+<br>
+<p>Пример обработки изображения</p>
+
 | До обработки  | После обработки |
 | ------------- | ------------- |
 | <img width="600" height="300" alt="image" src="https://github.com/ankkarp/wagon-number-ocr/blob/kinowari/photo_2023-10-15_00-12-44(%D0%B4%D0%BE).jpg">  | <img width="600" height="300" alt="image" src="https://github.com/ankkarp/wagon-number-ocr/blob/kinowari/photo_2023-10-15_00-02-06.jpg">  |
@@ -81,6 +89,8 @@ python test.py -d "Путь до весов скаченной модели де
 *Рената Аюпова (https://github.com/kinowari) - ML-engineer* 
 
 ## <a name="7">Ссылки </a>
-[Гугл диск с материалами](https://drive.google.com/drive/u/0/folders/13MgumU4OoE917fjG94GmjqmIzjyqc-jl)
-[ссылка на весы модели детекции](https://drive.google.com/file/d/1_GgjGP_vOUZLzOk44dhArin81sYBRJI8/view?usp=drive_link)
-[ссылка на скринкаст](https://drive.google.com/file/d/1Wdu8nEqs_M4TL1Mfy7-lKL54340miua6/view?usp=drive_link)
+
+
+- [Гугл диск с материалами](https://drive.google.com/drive/u/0/folders/13MgumU4OoE917fjG94GmjqmIzjyqc-jl)&nbsp;
+- [ссылка на весы модели детекции](https://drive.google.com/file/d/1_GgjGP_vOUZLzOk44dhArin81sYBRJI8/view?usp=drive_link)&nbsp;
+- [ссылка на скринкаст](https://drive.google.com/file/d/1Wdu8nEqs_M4TL1Mfy7-lKL54340miua6/view?usp=drive_link)&nbsp;
