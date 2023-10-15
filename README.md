@@ -27,7 +27,13 @@
 <img width="1200" height="300" alt="image" src="https://github.com/ankkarp/wagon-number-ocr/blob/kinowari/Frame%202.jpg"> 
 
 <br>
-<br>
+<p>Пример предобработки модели выравнивания перспективы</p>
+
+| До обработки  | После обработки |
+| ------------- | ------------- |
+| <img width="100" height="50" alt="image" src="https://github.com/ankkarp/wagon-number-ocr/blob/kinowari/photo_2023-10-15_06-14-10.jpg">  | <img width="100" height="50" alt="image" src="https://github.com/ankkarp/wagon-number-ocr/blob/kinowari/photo_2023-10-15_06-14-04.jpg">  |
+
+
 <br>
 <p>Пример обработки изображения</p>
 
