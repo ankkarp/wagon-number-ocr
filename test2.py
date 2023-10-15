@@ -37,7 +37,7 @@ if __name__ == "__main__":
 
     with open(args.output, 'w', encoding='UTF8') as f:
         fields = ('filename', 'type', 'number', 'is_correct')
-        writer = csv.DictWriter(f, fieldnames=fields, lineterminator='\n')
+        writer = csv.DictWriter(f, fieldnames=fields, lineterminator='\n', delimiter=';')
         writer.writeheader()
         for res in results:
             writer.writerow(res[0])
