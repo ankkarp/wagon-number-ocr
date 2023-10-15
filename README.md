@@ -23,6 +23,20 @@
 
 Решение представляет из себя последовательное применение моделей детекции и распознавания текста с последующей обработкой результата.
 
+### Архетиктура модели
+<img width="1200" height="300" alt="image" src="https://github.com/ankkarp/wagon-number-ocr/blob/kinowari/Frame%202.jpg"> 
+
+<br>
+<p>Пример предобработки модели выравнивания перспективы</p>
+
+| До обработки  | После обработки |
+| ------------- | ------------- |
+| <img width="100" height="50" alt="image" src="https://github.com/ankkarp/wagon-number-ocr/blob/kinowari/photo_2023-10-15_06-14-10.jpg">  | <img width="100" height="50" alt="image" src="https://github.com/ankkarp/wagon-number-ocr/blob/kinowari/photo_2023-10-15_06-14-04.jpg">  |
+
+
+<br>
+<p>Пример обработки изображения</p>
+
 | До обработки  | После обработки |
 | ------------- | ------------- |
 | <img width="600" height="300" alt="image" src="https://github.com/ankkarp/wagon-number-ocr/blob/kinowari/photo_2023-10-15_00-12-44(%D0%B4%D0%BE).jpg">  | <img width="600" height="300" alt="image" src="https://github.com/ankkarp/wagon-number-ocr/blob/kinowari/photo_2023-10-15_00-02-06.jpg">  |
@@ -35,9 +49,10 @@
 ```Bash
 git clone https://github.com/ankkarp/wagon-number-ocr.git
 ```
-2. Скачайте веса для модели детекции [ССЫЛКА](https://drive.google.com/drive/folders/1dJfBBPN-eLbLK-rgtZ2S7EVrKKa_5ftp?usp=sharing);
-3. Установить pytorch под версию cuda: https://pytorch.org/get-started/locally/
-4. Установить:
+2. Скачайте веса для модели детекции [yolov8.pt](https://drive.google.com/file/d/1_GgjGP_vOUZLzOk44dhArin81sYBRJI8/view?usp=drive_link);
+3. Скачайте веса для модели выравнивания [moran.pth](https://drive.google.com/file/d/1hCFVOzW8J6l59G3jsYwAFmZyjs0XwpT6/view?usp=drive_link);
+4. Установить pytorch под версию cuda: https://pytorch.org/get-started/locally/;
+5. Установить:
  ```Bash
 pip install -U openmim
 pip install chardet
@@ -47,18 +62,18 @@ mim install mmdet
 mim install mmocr
 pip install -U --force-reinstall charset-normalizer
 ```
-5. Установить зависимости проекта:
+6. Установить зависимости проекта:
  ```Bash
 pip install -r requirements.txt
 ```
-6. Запустите в командной строке следующую команду, предварительно заменив пути к папкам на ваши
+7. Запустите в командной строке следующую команду, предварительно заменив пути к папкам на ваши
 ```Bash
 cd путь_до_папки_с_кодом_репозитория
-python main.py -d "Путь до весов скаченной модели" -i "путь до папки с фотографиями" -o 'название_файла_с_результатом.csv'
+python test.py -d "Путь до весов скаченной модели детекции" -i "путь до папки с фотографиями" -o 'название_файла_с_результатом.csv' -r 'путь_до весов скаченной модели выравнивания'
 ```
 ## <a name="4">Уникальность нашего решения </a>
 
-Мы используем комбинацию моделей для распознавания цифр с последующей постобработкой в виде эвристик связанных с количеством предсказанных цифр
+Мы используем комбинацию моделей для распознавания цифр с предварительной предобработкой выравниванием изображения в перспективе и последующей постобработкой в виде эвристик связанных с количеством предсказанных цифр
 
 ## <a name="5">Стек </a>
   <img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original-wordmark.svg" title="Python" alt="Puthon" width="40" height="40"/>&nbsp;
@@ -80,4 +95,9 @@ python main.py -d "Путь до весов скаченной модели" -i 
 *Рената Аюпова (https://github.com/kinowari) - ML-engineer* 
 
 ## <a name="7">Ссылки </a>
-[Гугл диск с материалами](https://drive.google.com/drive/u/0/folders/13MgumU4OoE917fjG94GmjqmIzjyqc-jl)
+
+
+- [Гугл диск с материалами](https://drive.google.com/drive/u/0/folders/13MgumU4OoE917fjG94GmjqmIzjyqc-jl)&nbsp;
+- [ссылка на весы модели детекции](https://drive.google.com/file/d/1_GgjGP_vOUZLzOk44dhArin81sYBRJI8/view?usp=drive_link)&nbsp;
+- [ссылка на весы модели выравнивания](https://drive.google.com/file/d/1hCFVOzW8J6l59G3jsYwAFmZyjs0XwpT6/view?usp=drive_link)&nbsp;
+- [ссылка на скринкаст](https://drive.google.com/file/d/1Wdu8nEqs_M4TL1Mfy7-lKL54340miua6/view?usp=drive_link)&nbsp;
