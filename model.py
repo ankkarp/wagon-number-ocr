@@ -118,11 +118,11 @@ class NumberOcrModel:
 
         return detection_result, dir_path + crop_image_name
 
-    def recognize(self, image_name, crop_image_path, detected_data):
+    def recognize(self, img_path, crop_image_path, detected_data):
         if not detected_data[0] or len(detected_data[0].cpu().numpy()) == 0:
             return [
                 {
-                    'filename': image_name,
+                    'filename': img_path,
                     'type': 0,
                     'number': 0,
                     'is_correct': 0,
@@ -147,10 +147,11 @@ class NumberOcrModel:
                 num_sub = num_2
         else:
             num_sub = num_2
+        print(num_sub)
         result = [{
-            'filename': image_name,
+            'filename': img_path,
             'type': int(num_sub != None),
-            'number': (0, num_sub)[num_sub != None and num_sub != ''],
+            'number': int(num_sub) if num_sub != None and num_sub != '' else 0,
             'is_correct': is_valid(num_sub),
         }]
 
@@ -158,5 +159,5 @@ class NumberOcrModel:
 
     def predict(self, img_path, bin_prep=None):
         image_name = os.path.basename(os.path.normpath(img_path))
-        detected_data, crop_path = self.preprocess(img_path, image_name, bin_prep)
-        return self.recognize(image_name, crop_path, detected_data)
+        detected_data, crop_img_path = self.preprocess(img_path, image_name, bin_prep)
+        return self.recognize(img_path, crop_img_path, detected_data)
