@@ -147,7 +147,6 @@ class NumberOcrModel:
                 num_sub = num_2
         else:
             num_sub = num_2
-        print(num_sub)
         result = [{
             'filename': img_path,
             'type': int(num_sub != None),

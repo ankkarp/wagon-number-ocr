@@ -4,14 +4,13 @@ from os import walk
 import pandas as pd
 import csv
 
-from model import NumberOcrModel
+from model2 import NumberOcrModel
 
 parser = argparse.ArgumentParser()
 
 parser.add_argument('-i', '--input', help='Input image folder', type=str, default='test_images/')
 parser.add_argument('-o', '--output', help='Output csv-file', type=str, default='results.csv')
 parser.add_argument('-d', '--detection-weights', help='Path to YOLO detection model weights', type=str, default='models/best(6).pt')
-parser.add_argument('-r', '--rect-weights', help='Path to rectification model weights', type=str, default='moran.pth')
 
 
 args = parser.parse_args()
@@ -25,7 +24,6 @@ if __name__ == "__main__":
         detection_model=args.detection_weights,
         rec_model='damo/cv_convnextTiny_ocr-recognition-general_damo',
         angle_rec_model='SVTR-base',
-        moran_model=args.rect_weights
     )
 
     for (dirpath, dirnames, filenames) in walk(args.input):

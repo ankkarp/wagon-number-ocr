@@ -4,7 +4,7 @@ from os import walk
 import pandas as pd
 import csv
 
-from model2 import NumberOcrModel
+from model import NumberOcrModel
 
 parser = argparse.ArgumentParser()
 
@@ -24,7 +24,8 @@ if __name__ == "__main__":
     model = NumberOcrModel(
         detection_model=args.detection_weights,
         rec_model='damo/cv_convnextTiny_ocr-recognition-general_damo',
-        angle_rec_model='SVTR-base',
+        angle_rec_model='MASTER',
+        moran_model=args.rect_weights
     )
 
     for (dirpath, dirnames, filenames) in walk(args.input):
@@ -42,4 +43,3 @@ if __name__ == "__main__":
         for res in results:
             writer.writerow(res[0])
     file = pd.read_csv(args.output)
-    print(file)
