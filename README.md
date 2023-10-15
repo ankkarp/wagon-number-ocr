@@ -24,7 +24,7 @@
 Решение представляет из себя последовательное применение моделей детекции и распознавания текста с последующей обработкой результата.
 
 ### Архетиктура модели
-<img width="1200" height="300" alt="image" src="https://github.com/ankkarp/wagon-number-ocr/blob/kinowari/Frame%202.jpg"> 
+<img width="1200" height="300" alt="image" src="https://github.com/ankkarp/wagon-number-ocr/blob/kinowari/%D1%82%D1%83%D1%82.jpg"> 
 
 <br>
 <p>Пример предобработки модели выравнивания перспективы</p>
@@ -50,15 +50,14 @@
 git clone https://github.com/ankkarp/wagon-number-ocr.git
 ```
 2. Скачайте веса для модели детекции [yolov8.pt](https://drive.google.com/file/d/1_GgjGP_vOUZLzOk44dhArin81sYBRJI8/view?usp=drive_link);
-3. Скачайте веса для модели выравнивания [moran.pth](https://drive.google.com/file/d/1hCFVOzW8J6l59G3jsYwAFmZyjs0XwpT6/view?usp=drive_link);
-4. Установить pytorch==1.12.0 и torchvision==0.13.0 под версию cuda: https://pytorch.org/get-started/locally/;
+3. Установить pytorch==1.12.0 и torchvision==0.13.0 под версию cuda: https://pytorch.org/get-started/locally/;
 
 Через conda:
 ```Bash
 conda install pytorch==1.12.0 torchvision==0.13.0 pytorch-cuda={версия cuda} -c pytorch -c nvidia
 ```
 
-5. Установить:
+4. Установить:
  ```Bash
 pip install -U openmim
 pip install chardet
@@ -68,14 +67,14 @@ mim install mmdet
 mim install mmocr
 pip install -U --force-reinstall charset-normalizer
 ```
-6. Установить зависимости проекта:
+5. Установить зависимости проекта:
  ```Bash
 pip install -r requirements.txt
 ```
-7. Запустите в командной строке следующую команду, предварительно заменив пути к папкам на ваши
+6. Запустите в командной строке следующую команду, предварительно заменив пути к папкам на ваши
 ```Bash
 cd путь_до_папки_с_кодом_репозитория
-python test.py -d "Путь до весов скаченной модели детекции" -i "путь до папки с фотографиями" -o 'название_файла_с_результатом.csv' -r 'путь_до весов скаченной модели выравнивания'
+python test.py -d "Путь до весов скаченной модели детекции" -i "путь до папки с фотографиями" -o 'название_файла_с_результатом.csv' 
 ```
 ## <a name="4">Уникальность нашего решения </a>
 
