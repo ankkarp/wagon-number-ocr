@@ -35,9 +35,10 @@
 ```Bash
 git clone https://github.com/ankkarp/wagon-number-ocr.git
 ```
-2. Скачайте веса для модели детекции [ССЫЛКА](https://drive.google.com/drive/folders/1dJfBBPN-eLbLK-rgtZ2S7EVrKKa_5ftp?usp=sharing);
-3. Установить pytorch под версию cuda: https://pytorch.org/get-started/locally/
-4. Установить:
+2. Скачайте веса для модели детекции [yolov8.pt](https://drive.google.com/file/d/1_GgjGP_vOUZLzOk44dhArin81sYBRJI8/view?usp=drive_link);
+3. Скачайте веса для модели выравнивания [moran.pth](https://drive.google.com/file/d/1hCFVOzW8J6l59G3jsYwAFmZyjs0XwpT6/view?usp=drive_link);
+4. Установить pytorch под версию cuda: https://pytorch.org/get-started/locally/;
+5. Установить:
  ```Bash
 pip install -U openmim
 pip install chardet
@@ -54,7 +55,7 @@ pip install -r requirements.txt
 6. Запустите в командной строке следующую команду, предварительно заменив пути к папкам на ваши
 ```Bash
 cd путь_до_папки_с_кодом_репозитория
-python test.py -d "Путь до весов скаченной модели" -i "путь до папки с фотографиями" -o 'название_файла_с_результатом.csv' -r 'путь_к_модели_для_выравнивания_изображения'
+python test.py -d "Путь до весов скаченной модели детекции" -i "путь до папки с фотографиями" -o 'название_файла_с_результатом.csv' -r 'путь_до весов скаченной модели выравнивания'
 ```
 ## <a name="4">Уникальность нашего решения </a>
 
@@ -81,3 +82,5 @@ python test.py -d "Путь до весов скаченной модели" -i 
 
 ## <a name="7">Ссылки </a>
 [Гугл диск с материалами](https://drive.google.com/drive/u/0/folders/13MgumU4OoE917fjG94GmjqmIzjyqc-jl)
+[ссылка на весы модели детекции](https://drive.google.com/file/d/1_GgjGP_vOUZLzOk44dhArin81sYBRJI8/view?usp=drive_link)
+[ссылка на скринкаст](https://drive.google.com/file/d/1Wdu8nEqs_M4TL1Mfy7-lKL54340miua6/view?usp=drive_link)
