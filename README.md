@@ -51,7 +51,13 @@ git clone https://github.com/ankkarp/wagon-number-ocr.git
 ```
 2. Скачайте веса для модели детекции [yolov8.pt](https://drive.google.com/file/d/1_GgjGP_vOUZLzOk44dhArin81sYBRJI8/view?usp=drive_link);
 3. Скачайте веса для модели выравнивания [moran.pth](https://drive.google.com/file/d/1hCFVOzW8J6l59G3jsYwAFmZyjs0XwpT6/view?usp=drive_link);
-4. Установить pytorch под версию cuda: https://pytorch.org/get-started/locally/;
+4. Установить pytorch==1.12.0 и torchvision==0.13.0 под версию cuda: https://pytorch.org/get-started/locally/;
+
+Через conda:
+```Bash
+conda install pytorch==1.12.0 torchvision==0.13.0 pytorch-cuda={версия cuda} -c pytorch -c nvidia
+```
+
 5. Установить:
  ```Bash
 pip install -U openmim
