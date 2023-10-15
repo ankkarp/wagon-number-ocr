@@ -1,0 +1,8 @@
+Colour==0.1.5
+LMDB==1.4.1
+matplotlib==3.8.0
+Pillow==10.0.1
+opencv-python==4.8.1.78
+pandas==2.1.1
+modelscope==1.9.2
+ultralytics==8.0.198
