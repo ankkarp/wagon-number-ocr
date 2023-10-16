@@ -95,7 +95,7 @@ python aster_test.py -d "Путь до весов скаченной модел�
 *Состав команды "Герои ML и Магии"*   
 *Анна Карпова (https://github.com/ankkarp) - ML-engineer*    
 *Александра Куроедова (https://github.com/c-nemo) - ML-engineer*  
-*Анастасия Хан (https://github.com/Nanochka1) - Disigner*  
+*Анастасия Хан (https://github.com/Nanochka1) - Designer*  
 *Олег Сивец (https://github.com/OlegSivets) - ML-engineer*   
 *Рената Аюпова (https://github.com/kinowari) - ML-engineer* 
 
